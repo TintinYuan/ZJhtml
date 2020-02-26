@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>丁丁的小游戏</title>
+    <style>
+      #div1 {width: 200px;height:200px;background:royalblue;}
+    </style>
+  </head>
+
+  <body>
+    <!-- HTML的注释长这样 -->
+    <div id="div1">
+    </div>
+    能不能将蓝方块变红呢？
+    <!-- 如果要换行要这么写，文本中换行不算 --> 
+    <br>
+    又或者将红方块变蓝呢？
+    
+    <!-- script一般放在Body的最后，而且要按顺序加载 -->
+    <script>
+      function ToRed(e){
+          // e.target就是发生事件的对象
+          // 就不需要再找了
+          var head = e.target;
+          head.style.width='300px';
+          head.style.height='300px';
+          head.style.background='red';
+      }
+
+      function ToBlue(e){
+          var head = e.target;
+          head.style.width='200px';
+          head.style.height='200px';
+          head.style.background='royalblue'
+      }
+
+      function Show(){
+          alert("⚠警告：此网页植入恶意Cookie！不建议访问");
+      }
+      // 事件侦听器，监测load事件
+      // 也就是先等面页加载完成
+      // 引号用单引号还是双引号有细微的差别，但更多的是个人习惯。
+      window.addEventListener("load", function() {
+          // 注意这是个 匿名函数
+          var div1 = document.getElementById("div1");
+          // 可以用document.querySelector("#div1")
+          // 下面的这两个也可以写成匿名函数的形式，因为它们只用到一次。
+          div1.addEventListener("mouseover", ToRed);
+          div1.addEventListener("mouseout", ToBlue);
+          Show();
+      });
+
+
+    </script>
+  </body>
+</html>
